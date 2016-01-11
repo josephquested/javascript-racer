@@ -3,6 +3,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Racey Game</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type ="text/javascript" src="script.js"></script>
     <link href="https://necolas.github.io/normalize.css/3.0.2/normalize.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
@@ -12,15 +14,29 @@
       <td>Start</td>
       </tr>
     <table class="racer_table">
-
-
-      <tr id="player1_strip">
-        <td class="active"></td>
-        <td></td>
+      <tr class ="startingRow">
+        <td class ="player1CellActive">
+          <p class ="player1Text">Player One</p>
+        </td>
+        <td class ="player2CellActive">
+          <p class = "player2text">Player Two</p>
+        </td>
       </tr>
-      <tr id="player2_strip">
-        <td class="active"></td>
-        <td></td>
+      <tr class ="trackRow">
+        <td class ="player1Cell">
+          <p class ="player1Text"></p>
+        </td>
+        <td class ="player2Cell">
+          <p class = "player2text"></p>
+        </td>
+      </tr>
+      <tr class ="trackRow">
+        <td class ="player1Cell">
+          <p class ="player1Text"></p>
+        </td>
+        <td class ="player2Cell">
+          <p class = "player2text"></p>
+        </td>
       </tr>
     </table>
   </body>

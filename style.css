@@ -1,15 +1,27 @@
 .racer_table td {
-  background-color: red;
-  height: 50px;
-  width: 50px;
+  background-color: gray;
+  height: 75px;
+  width: 75px;
 }
 
-.racer_table td.active {
-  background-color: black;
+.racer_table td.player1CellActive {
+  background-color: blue;
+}
+
+.racer_table td.player2CellActive {
+  background-color: red;
 }
 
 .startingBanner {
   width: 150px;
   background-color: green;
   text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+p .player1Text {
+
 }
