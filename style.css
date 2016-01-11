@@ -1,0 +1,15 @@
+.racer_table td {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+}
+
+.racer_table td.active {
+  background-color: black;
+}
+
+.startingBanner {
+  width: 150px;
+  background-color: green;
+  text-align: center;
+}
