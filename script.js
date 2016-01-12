@@ -4,20 +4,35 @@ var player1Position = 0;
 var player2Position = 0;
 
 function UpdatePosition(player) {
-  if (player == "player1") {
-    $(".player1CellActive").css("background-color", "black");
-  }
+  BuildTrack(5);
+  //var track = $(".racerTable");
+  var track = document.getElementById("racingTrack");
+  var cellInArray = $("." + player + "CellActive");
+  cellInArray.css("background-color", "black");
 
-  if (player == "player2") {
-    BuildTrack(5);
+  for (var i = 0, row; row = track.rows[i]; i++) {
+    for (var a = 0, cell; cell = row.cells[a]; a++) {
+      if (cell.classList.contains(player + "CellActive")) {
+        var nextCell = track.rows[(i + 1)].cells[a];
+        console.log(nextCell);
+        cell.classList.remove(player + "CellActive");
+        cell.classList.add(player + "Cell");
+        nextCell.classList.remove(player + "Cell");
+        nextCell.classList.add(player + "CellActive");
+        return;
+        //cell.classList.add(player + "Cell");
+        //console.log(nextCell);
+      }
+    }
   }
 }
+
 
 function BuildTrack(length) {
   var track = $(".racerTable");
  //track.remove();
  for (var i = 0; i < length; i++) {
-    track.append('<tr class ="trackRow"><td class ="player1Cell"> <p class ="player1Text"></p></td><td class ="player2Cell"><p class = "player2text"></p></td></tr>');
+    track.append('<tr class ="trackRow' + i + '"><td class ="player1Cell"> <p class ="player1Text"></p></td><td class ="player2Cell"><p class = "player2text"></p></td></tr>');
   }   
 }
 
@@ -33,7 +48,9 @@ $('document').ready(function() {
       player = "player2";
     }
 
-    UpdatePosition(player);
+    if (player == "player1" || player == "player2") {
+      UpdatePosition(player);
+    }
   });
 
   function TestText () {
