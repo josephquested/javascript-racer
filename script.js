@@ -13,15 +13,12 @@ function UpdatePosition(player) {
     for (var a = 0, cell; cell = row.cells[a]; a++) {
       if (cell.classList.contains(player + "CellActive")) {
 
-        console.log(track.rows.length);
-
         if ((i + 2) > track.rows.length) {
           GameOver(player);
           return;
         }
 
         var nextCell = track.rows[(i + 1)].cells[a];
-        console.log(nextCell);
         cell.classList.remove(player + "CellActive");
         cell.classList.add(player + "Cell");
         nextCell.classList.remove(player + "Cell");
@@ -35,7 +32,7 @@ function UpdatePosition(player) {
 
 function GameOver (player) {
   alert(player + " wins!");
-
+  window.location.reload()
 }
 
 
@@ -49,7 +46,7 @@ function BuildTrack() {
     track.append('<tr class ="trackRow' + i + '"><td class ="player1Cell"></td><td class ="player2Cell"></td></tr>');
   }   
 
-  $(".startingRow").innerHTML = "Finish";
+  document.getElementById("startingRowText").innerHTML = "Finish";
 }
 
 $('document').ready(function() {
