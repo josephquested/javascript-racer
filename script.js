@@ -19,9 +19,8 @@ function UpdatePosition(player) {
         cell.classList.add(player + "Cell");
         nextCell.classList.remove(player + "Cell");
         nextCell.classList.add(player + "CellActive");
+        nextCell.innerHTML = player;
         return;
-        //cell.classList.add(player + "Cell");
-        //console.log(nextCell);
       }
     }
   }
@@ -32,7 +31,7 @@ function BuildTrack(length) {
   var track = $(".racerTable");
  //track.remove();
  for (var i = 0; i < length; i++) {
-    track.append('<tr class ="trackRow' + i + '"><td class ="player1Cell"> <p class ="player1Text"></p></td><td class ="player2Cell"><p class = "player2text"></p></td></tr>');
+    track.append('<tr class ="trackRow' + i + '"><td class ="player1Cell"></td><td class ="player2Cell"></td></tr>');
   }   
 }
 
