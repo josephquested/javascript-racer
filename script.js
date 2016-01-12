@@ -1,11 +1,10 @@
 
-var trackLength = 0;
+var trackBuilt = false;
+
 var player1Position = 0;
 var player2Position = 0;
 
 function UpdatePosition(player) {
-  BuildTrack(5);
-  //var track = $(".racerTable");
   var track = document.getElementById("racingTrack");
   var cellInArray = $("." + player + "CellActive");
   cellInArray.css("background-color", "black");
@@ -13,6 +12,14 @@ function UpdatePosition(player) {
   for (var i = 0, row; row = track.rows[i]; i++) {
     for (var a = 0, cell; cell = row.cells[a]; a++) {
       if (cell.classList.contains(player + "CellActive")) {
+
+        console.log(track.rows.length);
+
+        if ((i + 2) > track.rows.length) {
+          GameOver(player);
+          return;
+        }
+
         var nextCell = track.rows[(i + 1)].cells[a];
         console.log(nextCell);
         cell.classList.remove(player + "CellActive");
@@ -26,13 +33,23 @@ function UpdatePosition(player) {
   }
 }
 
+function GameOver (player) {
+  alert(player + " wins!");
 
-function BuildTrack(length) {
+}
+
+
+function BuildTrack() {
+  $(".racerTable").remove();
+  $(".board").prepend('<table id ="racingTrack" class="racerTable"><tr class ="startingRow"><td class ="player1CellActive">player1</td><td class ="player2CellActive">player2</td></tr></table>');
   var track = $(".racerTable");
- //track.remove();
- for (var i = 0; i < length; i++) {
+  trackBuilt = true;
+  var trackLength = document.getElementById("trackLength").value;
+  for (var i = 0; i < trackLength; i++) {
     track.append('<tr class ="trackRow' + i + '"><td class ="player1Cell"></td><td class ="player2Cell"></td></tr>');
   }   
+
+  $(".startingRow").innerHTML = "Finish";
 }
 
 $('document').ready(function() {
@@ -47,12 +64,10 @@ $('document').ready(function() {
       player = "player2";
     }
 
-    if (player == "player1" || player == "player2") {
-      UpdatePosition(player);
+    if (trackBuilt) {
+      if (player == "player1" || player == "player2") {
+        UpdatePosition(player);
+      }
     }
   });
-
-  function TestText () {
-    console.log("Omomsd!");
-  }  
 });
